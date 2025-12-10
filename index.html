@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GameHub - Your place to play fun browser-based games">
+  <meta name="author" content="GameHub Team">
+  <title>GameHub | Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+</head>
+<body>
+  <div class="container">
+    <nav class="sidebar" role="navigation" aria-label="Main Navigation">
+      <div class="logo">GameHub</div>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="TicTacToe.html">Tic Tac Toe</a></li>
+        <li><a href="RPS.html">Rock Paper Scissors</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="Team.html">Meet the Team</a></li>
+        <li><a href="Mission.html">Our Mission</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <header>
+        <h1>Welcome to GameHub</h1>
+        <p id="top">Your place to play, learn, and create!</p>
+      </header>
+
+      <section class="intro">
+        <p>
+          Explore our fun browser-based games built by students. Whether you want a quick 
+          round of <strong>Tic Tac Toe</strong> or a classic match of 
+          <strong>Rock Paper Scissors</strong>, we've got you covered!
+        </p>
+      </section>
+
+      <section class="game-links">
+        <button onclick="window.location.href='TicTacToe.html'">Play Tic Tac Toe</button>
+        <button onclick="window.location.href='RPS.html'">Play Rock Paper Scissors</button>
+      </section>
+
+      <!-- Video Placeholder for Rubric -->
+      <section class="video-container" aria-labelledby="video-heading">
+        <h2 id="video-heading">Making your own games!</h2>
+        <p>Learn how to make your own games!</p>
+        <div class="video-placeholder">
+          <p></p>
+          <p><video width="400" controls><source src="YTHowTo.mp4" type="video/mp4"></video></p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>© 2025 GameHub</p>
+    <div class="copyright-notice">
+      All content created by GameHub team. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

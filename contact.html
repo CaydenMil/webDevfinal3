@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact the GameHub team with your feedback and suggestions">
+  <meta name="author" content="GameHub Team">
+  <title>GameHub | Contact Us</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+</head>
+<body>
+  <div class="container">
+    <nav class="sidebar" role="navigation" aria-label="Main Navigation">
+      <div class="logo">GameHub</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="TicTacToe.html">Tic Tac Toe</a></li>
+        <li><a href="RPS.html">Rock Paper Scissors</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="Team.html">Meet the Team</a></li>
+        <li><a href="Mission.html">Our Mission</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <header>
+        <h1>Contact Us!</h1>
+        <p>Give us any suggestions you might have!</p>
+      </header>
+
+      <section class="intro">
+        <p>
+          We want to hear what you think! Whether it's feedback on our games, suggestions for new features, or just a friendly hello, feel free to reach out to us. 
+          Your input helps us improve and create a better gaming experience for everyone.
+        </p>
+        
+        <!-- Email Link for Rubric -->
+        <p>
+          <strong>Direct Email:</strong> 
+          <a href="mailto:contact@gamehub.example.com?subject=GameHub%20Feedback" aria-label="Send email to GameHub team">
+            contact@gamehub.example.com
+          </a>
+        </p>
+      </section>
+
+      <section class="contact-form">
+        <h2>Send Us a Message</h2>
+        <form aria-labelledby="form-heading">
+          <label for="name">Name:</label><br>
+          <input type="text" id="name" name="name" required aria-required="true"><br>
+  
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" name="email" required aria-required="true"><br>
+  
+          <label for="message">Message:</label><br>
+          <textarea id="message" name="message" rows="5" required aria-required="true"></textarea><br>
+  
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>© 2025 GameHub</p>
+    <div class="copyright-notice">
+      All content created by GameHub team. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

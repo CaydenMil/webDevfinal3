@@ -1,0 +1,848 @@
+:root {
+  --primary-green: #2ecc71;
+  --dark-green: #27ae60;
+  --light-green: #90ee90;
+  --dark-bg: #1a1f2b;
+  --medium-bg: #2c3e50;
+  --light-bg: #34495e;
+  --text-light: #ecf0f1;
+  --text-muted: #bdc3c7;
+  --accent-blue: #3498db;
+  --accent-purple: #9b59b6;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --gradient-green: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f1721 0%, var(--dark-bg) 100%);
+  color: var(--text-light);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: var(--light-green);
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-green);
+  transform: translateY(-1px);
+}
+
+button {
+  background: var(--gradient-green);
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  margin: 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px var(--shadow);
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
+}
+
+button:active {
+  transform: translateY(-1px);
+}
+
+button:active::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+/* Layout */
+.container {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+  background: linear-gradient(180deg, var(--medium-bg) 0%, #253341 100%);
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-right: 2px solid rgba(46, 204, 113, 0.2);
+  box-shadow: 5px 0 25px var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-green);
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: white;
+  text-shadow: 0 2px 10px rgba(46, 204, 113, 0.5);
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  text-align: center;
+  letter-spacing: 1px;
+  background: linear-gradient(45deg, white, var(--light-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.sidebar li {
+  margin: 8px 0;
+  position: relative;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  border-radius: 12px;
+  color: var(--text-muted);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: var(--primary-green);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.sidebar a:hover::before {
+  transform: translateX(0);
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: linear-gradient(90deg, rgba(46, 204, 113, 0.1), rgba(46, 204, 113, 0.05));
+  color: var(--light-green);
+  transform: translateX(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar a.active {
+  background: linear-gradient(90deg, rgba(46, 204, 113, 0.2), rgba(46, 204, 113, 0.1));
+  color: white;
+  font-weight: 600;
+}
+
+/* Main Content */
+main {
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(26, 31, 43, 0.95) 0%, rgba(44, 62, 80, 0.95) 100%);
+  overflow-y: auto;
+  position: relative;
+}
+
+main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(46, 204, 113, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(155, 89, 182, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--gradient-green);
+  border-radius: 2px;
+}
+
+h1 {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--gradient-green);
+  margin: 15px auto;
+  border-radius: 2px;
+}
+
+h2 {
+  color: var(--light-green);
+  margin-top: 40px;
+  font-size: 2rem;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--primary-green);
+  border-radius: 1.5px;
+}
+
+h3 {
+  color: white;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+/* Game Area */
+#gameArea {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.8) 0%, rgba(52, 73, 94, 0.8) 100%);
+  border-radius: 20px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+#gameArea::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-green), var(--accent-blue), var(--accent-purple));
+  z-index: -1;
+  border-radius: 22px;
+  opacity: 0.2;
+}
+
+#status {
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  color: var(--light-green);
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  display: inline-block;
+}
+
+/* Board Game Styles */
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  gap: 10px;
+  justify-content: center;
+  margin: 30px auto;
+  perspective: 1000px;
+}
+
+.cell {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, rgba(52, 73, 94, 0.9) 0%, rgba(44, 62, 80, 0.9) 100%);
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  color: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+}
+
+.cell::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.cell:hover::before {
+  transform: translateX(100%);
+}
+
+.cell:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.3),
+    0 0 0 2px var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+.cell:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.cell.x {
+  color: var(--primary-green);
+  text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+.cell.o {
+  color: var(--accent-blue);
+  text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+/* RPS Game Styles */
+#gameContent {
+  margin-top: 30px;
+}
+
+.button-active {
+  transform: scale(0.95) rotate(5deg);
+  background: linear-gradient(135deg, var(--dark-green) 0%, #1e8449 100%) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Team Page Styles */
+.team-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border-left: 4px solid var(--primary-green);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin: 50px 0;
+}
+
+.team-member {
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.8) 0%, rgba(52, 73, 94, 0.8) 100%);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-member::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-green);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.team-member:hover::before {
+  transform: translateX(0);
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+  box-shadow: 
+    0 15px 30px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(46, 204, 113, 0.3);
+}
+
+.member-icon {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover .member-icon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.role {
+  color: var(--primary-green);
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.join-team {
+  text-align: center;
+  margin-top: 60px;
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%);
+  border-radius: 20px;
+  border-left: 4px solid var(--primary-green);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Mission Page Styles */
+.mission-card {
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.8) 0%, rgba(52, 73, 94, 0.8) 100%);
+  padding: 35px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  border-left: 4px solid var(--primary-green);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.mission-card:hover {
+  transform: translateY(-5px);
+}
+
+.mission-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(46, 204, 113, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mission-card:hover::before {
+  opacity: 1;
+}
+
+.values-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.values-list li {
+  padding: 15px 0;
+  padding-left: 40px;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.values-list li:last-child {
+  border-bottom: none;
+}
+
+.values-list li:hover {
+  background: rgba(255, 255, 255, 0.05);
+  padding-left: 45px;
+  border-radius: 8px;
+}
+
+.values-list li:before {
+  content: "✓";
+  color: var(--primary-green);
+  position: absolute;
+  left: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Contact Form */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-form label {
+  display: block;
+  margin: 20px 0 8px;
+  color: var(--light-green);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.contact-form button {
+  margin-top: 25px;
+  width: 100%;
+  padding: 18px;
+  font-size: 1.1rem;
+}
+
+/* Table Styles */
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 25px 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.data-table th {
+  background: linear-gradient(135deg, var(--medium-bg) 0%, var(--light-bg) 100%);
+  color: var(--light-green);
+  padding: 18px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary-green);
+}
+
+.data-table td {
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  transition: background 0.3s ease;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:hover td {
+  background: rgba(46, 204, 113, 0.1);
+}
+
+/* Video Container */
+.video-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-placeholder {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 50px;
+  border-radius: 15px;
+  margin: 25px 0;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.video-placeholder:hover {
+  border-color: var(--primary-green);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Intro Sections */
+.intro {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  border-left: 4px solid var(--primary-green);
+}
+
+.game-links {
+  text-align: center;
+  margin-top: 50px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.game-links button {
+  min-width: 200px;
+  padding: 18px 30px;
+  font-size: 1.1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px 0;
+  background: linear-gradient(180deg, var(--medium-bg) 0%, #253341 100%);
+  color: var(--light-green);
+  font-size: 1rem;
+  border-top: 2px solid rgba(46, 204, 113, 0.2);
+  grid-column: 1 / -1;
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-green);
+}
+
+.copyright-notice {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Accessibility */
+:focus {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar {
+    position: static;
+    width: 100%;
+    padding: 20px;
+    border-right: none;
+    border-bottom: 2px solid rgba(46, 204, 113, 0.2);
+  }
+  
+  main {
+    padding: 30px;
+  }
+  
+  #board {
+    grid-template-columns: repeat(3, 80px);
+  }
+  
+  .cell {
+    width: 80px;
+    height: 80px;
+    font-size: 2.5em;
+  }
+  
+  .team-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  #gameArea {
+    padding: 25px;
+  }
+  
+  .contact-form {
+    padding: 25px;
+  }
+  
+  .mission-card {
+    padding: 25px;
+  }
+  
+  .team-member {
+    padding: 25px;
+  }
+  
+  .game-links {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .game-links button {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  #gameArea {
+    padding: 20px;
+  }
+  
+  button {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+  
+  #board {
+    grid-template-columns: repeat(3, 70px);
+    gap: 8px;
+  }
+  
+  .cell {
+    width: 70px;
+    height: 70px;
+    font-size: 2em;
+  }
+  
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-form {
+    padding: 20px;
+  }
+  
+  .video-placeholder {
+    padding: 30px;
+  }
+}
